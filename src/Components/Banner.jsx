@@ -1,16 +1,31 @@
 import { Button, makeStyles, Typography } from '@material-ui/core';
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import avatar from '../img/image-The-Witcher-social-media-banner-Netflix.jpg'
+import requests from '../Request';
 
 export const Banner = () => {
     const clases = useStyle();
+    const[movie, setMovie] = useState([]);
 
     const truncate = (string, n)=> string?.length > n ? `${string.substring(0, n-1)}...`:string
+
+    useEffect(()=>{
+      const fetchData = async ()=>{
+        const request = await axios.get(requests.fetchNetflixOriginals)
+        const random = Math.floor(Math.random()* request.data.results.length -1 ) 
+        setMovie(request.data.results[random])
+        return request
+      }
+      fetchData()
+    },[])
   return (
-    <div className={clases.root}>
+    <div className={clases.root} style={{
+      backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`
+    }}>
       <div className={clases.content}>
         <Typography variant="h2" component="h1" >
-          Movie title
+          {movie.title || movie?.name || movie?.original_name}
         </Typography>
         <div className={clases.buttons}>
           <Button>Play</Button>
@@ -18,7 +33,7 @@ export const Banner = () => {
         </div>
         <Typography variant="h6" className={clases.description}>
           {
-            truncate("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 160)
+            truncate(movie?.overview, 160)
           }
         </Typography>
         <div className={clases.fottom}></div>
@@ -28,7 +43,7 @@ export const Banner = () => {
 }
 const useStyle = makeStyles((theme)=>({
     root:{
-     backgroundImage: `url(${avatar})`,
+    //  backgroundImage: `url(${avatar})`,
      position: 'relative',
      height:"640px",
      objectFit:"contain",
@@ -38,8 +53,22 @@ const useStyle = makeStyles((theme)=>({
      color: "#fff",
     },
     description:{
-      justifyContent:"space-around"
+      justifyContent:"space-around",
     },
+    content:{
+      // position:"relative",
+      // top:"300px"
+      padding:"50px",
+      paddingTop: "170px",
+      "& h1":{
+        fontSize:"100px"
+      },
+      "& h6":{
+        width:"40%",
+        justifyContent:"center",
+        color:"#fff"
+      }
+      },
     fottom:{
       position: "absolute",
       top:"30vh",
@@ -55,8 +84,9 @@ const useStyle = makeStyles((theme)=>({
         color: "#fff",
         fontweight: 700,
         borderRadius:"5px",
-        padding: theme.spacing(1,4,1,4),
+        padding: theme.spacing(1,7,1,7),
         marginRight:"1rem",
+        margin:"20px",
         backgroundColor:"rgba(51,51,51,0.5)"
       },
       "& button:hover":{
