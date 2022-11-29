@@ -9,7 +9,7 @@ import requests from '../Request';
 export const Home = ({}) => {
   const clases = useStyle();
   return (
-    <div >
+    <div className={clases.root}>
       <Header/>
       <Banner/>
       <div className={clases.titulos}>
@@ -29,6 +29,9 @@ const useStyle = makeStyles((theme)=>({
   root:{
   },
   titulos:{
+    bottom:"200px",
+    position:"relative",
+    zIndex:"99",
     "& title":{
       padding:"40px"
     }

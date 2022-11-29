@@ -45,11 +45,11 @@ const useStyle = makeStyles((theme)=>({
     root:{
     //  backgroundImage: `url(${avatar})`,
      position: 'relative',
-     height:"640px",
+     height:"1050px",
      objectFit:"contain",
-    //  backgroundRepeat: "no-repeat",
-     backgroundSize: "1600px",
-     backgroundPosition: "center",
+     backgroundRepeat: "no-repeat",
+     backgroundSize: "100%",
+    //  backgroundPosition: "center",
      color: "#fff",
     },
     description:{
@@ -59,14 +59,16 @@ const useStyle = makeStyles((theme)=>({
       // position:"relative",
       // top:"300px"
       padding:"50px",
-      paddingTop: "170px",
+      paddingTop: "400px",
       "& h1":{
-        fontSize:"100px"
+        fontSize:"100px",
+        zIndex:"99",
       },
       "& h6":{
-        width:"40%",
+        width:"30%",
         justifyContent:"center",
-        color:"#fff"
+        color:"#fff",
+        zIndex:"99",
       }
       },
     fottom:{

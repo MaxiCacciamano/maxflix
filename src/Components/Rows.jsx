@@ -2,7 +2,7 @@ import { makeStyles, Typography } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'  
 
-export const Rows = ({title ,fetchUrl, isLargeRow}) => {
+export const Rows = ({name,title ,fetchUrl, isLargeRow}) => {
     const clases = useStyle(); 
     const [movies, setMovies] = useState([]);
 
@@ -36,8 +36,11 @@ export const Rows = ({title ,fetchUrl, isLargeRow}) => {
             }`}
             alt={movie?.name}
             />
-          ))
-        } 
+            ))
+          } 
+          <div>
+          <h5>{name}</h5>
+          </div>
       </div>
     </div>
   )
@@ -55,10 +58,11 @@ const useStyle = makeStyles((theme)=>({
         display:"none",
       },
       // "& img":{
-      //   width:"12rem"
-      // }
-    },
-    posterr:{
+        //   width:"12rem"
+        // }
+      },
+      posterr:{
+      borderRadius:"5px",
       maxHeight:"12rem",
       objectFit:"contain",
       marginRight:theme.spacing(1),
