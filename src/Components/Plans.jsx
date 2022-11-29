@@ -1,15 +1,28 @@
 import { makeStyles, Typography } from '@material-ui/core';
 import { NetflixButton } from '../Style/StyleComponents'
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 
 export const Plans = ({cost, children, color="red", wide}) => {
     const clases = useStyle();
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const handleClick = (cost)=>{
+      // dispatch(setPrice(cost));
+      history.push("/checkout")
+    }
   return (
     <div className={clases.root}>
       <Typography variant="h5" className={clases.standar}>
       {children}
       </Typography>
-      <NetflixButton color={color} wide={wide}>Suscribe</NetflixButton>
+      <NetflixButton
+       color={color}
+        wide={wide}
+        onClick={()=>handleClick(cost)}
+        >Suscribe</NetflixButton>
     </div>
   )
 }

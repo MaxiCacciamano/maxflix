@@ -23,3 +23,7 @@ font-size:1.1rem;
 outline:none;
 border:none; 
 `
+
+export const Titles= styled.title`
+padding:40px;
+`
