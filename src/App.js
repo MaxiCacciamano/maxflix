@@ -1,4 +1,4 @@
-import { Counter } from './features/counter/Counter';
+// import { Counter } from './features/counter/Counter';
 import {useEffect, useState} from 'react';
 import {makeStyles} from '@material-ui/core'
 import {useDispatch, useSelector} from 'react-redux';
@@ -37,9 +37,7 @@ function App() {
           <Switch>
             <Route path="/login" component={Login}/>
             <Route path="/profile" component={Profile} />
-            <Route path="/PayPal">
-              <PayPal/>
-            </Route>
+            <Route path="/paypal" component={PayPal} />
             <Route exact path="/" >
               <Home/>
             </Route>

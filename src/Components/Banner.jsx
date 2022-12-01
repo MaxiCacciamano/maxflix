@@ -36,8 +36,8 @@ export const Banner = () => {
             truncate(movie?.overview, 160)
           }
         </Typography>
-        <div className={clases.fottom}></div>
       </div>
+        <div className={clases.fottom}></div>
     </div>
   )
 }
@@ -45,10 +45,11 @@ const useStyle = makeStyles((theme)=>({
     root:{
     //  backgroundImage: `url(${avatar})`,
      position: 'relative',
-     height:"1050px",
+     height:"700px",
      objectFit:"contain",
      backgroundRepeat: "no-repeat",
-     backgroundSize: "100%",
+     backgroundSize: "cover",
+    //  backgroundPositionY:"100%",
     //  backgroundPosition: "center",
      color: "#fff",
     },
@@ -56,20 +57,21 @@ const useStyle = makeStyles((theme)=>({
       justifyContent:"space-around",
     },
     content:{
-      // position:"relative",
-      // top:"300px"
       padding:"50px",
-      paddingTop: "400px",
+      paddinTop: "600px",
       "& h1":{
         fontSize:"100px",
-        zIndex:"99",
+        // zIndex:"99",
       },
       "& h6":{
-        width:"30%",
+        width:"auto",
         justifyContent:"center",
         color:"#fff",
-        zIndex:"99",
+        // zIndex:"99",
       }
+
+
+      
       },
     fottom:{
       position: "absolute",
@@ -96,5 +98,6 @@ const useStyle = makeStyles((theme)=>({
         backgroundColor:"#e6e6e6"
       }
     },
+
   }))
   
