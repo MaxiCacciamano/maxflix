@@ -13,7 +13,7 @@ export const Profile = () => {
   const history = useHistory();
   const signOut = ()=>{
       auth.signOut();
-      history.push("/PayPal")
+      history.push("/login")
 
   }
   return (
